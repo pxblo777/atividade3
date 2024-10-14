@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Área do Retângulo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ff1111;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cálculo da Área do Retângulo</h2>
+        <label for="base">Base do Retângulo (em centímetros):</label>
+        <input type="number" id="base" placeholder="Digite a base" required>
+
+        <label for="altura">Altura do Retângulo (em centímetros):</label>
+        <input type="number" id="altura" placeholder="Digite a altura" required>
+
+        <button onclick="calcularArea()">Calcular Área</button>
+
+        <label for="resultado">Área:</label>
+        <textarea id="resultado" rows="3" readonly></textarea>
+    </div>
+
+    <script>
+        function calcularArea() {
+            const base = parseFloat(document.getElementById('base').value);
+            const altura = parseFloat(document.getElementById('altura').value);
+            const area = base * altura;
+
+            document.getElementById('resultado').value = `A área do retângulo é: ${area.toFixed(2)} Cm²`;
+        }
+    </script>
+</body>
+</html>

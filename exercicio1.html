@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financiamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #9cc933;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Calcular Financiamento</h2>
+        <label for="valor">Valor Total da Compra:</label>
+        <input type="number" id="valor" placeholder="Digite o valor total" required>
+
+        <label for="parcelas">Quantidade de Parcelas:</label>
+        <input type="number" id="parcelas" placeholder="Digite a quantidade de parcelas" required>
+
+        <button onclick="calcularParcelas()">Calcular Parcela</button>
+
+        <h3 id="resultado"></h3>
+    </div>
+
+    <script>
+        function calcularParcelas() {
+            const valorTotal = parseFloat(document.getElementById('valor').value);
+            const quantidadeParcelas = parseInt(document.getElementById('parcelas').value);
+            let taxaJuros;
+
+            
+            if (quantidadeParcelas === 1) {
+                taxaJuros = 0;
+            } else if (quantidadeParcelas === 2) {
+                taxaJuros = 0.05; // 5%
+            } else if (quantidadeParcelas === 3) {
+                taxaJuros = 0.1; // 10%
+            } else if (quantidadeParcelas <= 6) {
+                taxaJuros = 0.15; // 15%
+            } else {
+                taxaJuros = 0.2; // 20%
+            }
+
+            const valorComJuros = valorTotal * (1 + taxaJuros);
+            const valorParcela = valorComJuros / quantidadeParcelas;
+
+            document.getElementById('resultado').innerText = 
+                `Valor de cada parcela: R$ ${valorParcela.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>

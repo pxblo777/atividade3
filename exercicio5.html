@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cálculo da Média do Aluno</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #04ffd5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            border: none;
+            border-radius: 4px;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Cálculo da Média do Aluno</h2>
+        <label for="nota1">Digite a primeira nota:</label>
+        <input type="number" id="nota1" placeholder="Primeira nota" step="0.01" required>
+
+        <label for="nota2">Digite a segunda nota:</label>
+        <input type="number" id="nota2" placeholder="Segunda nota" step="0.01" required>
+
+        <label for="nota3">Digite a terceira nota:</label>
+        <input type="number" id="nota3" placeholder="Terceira nota" step="0.01" required>
+
+        <button onclick="calcularMedia()">Calcular Média</button>
+
+        <label for="resultado">Resultado:</label>
+        <textarea id="resultado" rows="4" readonly></textarea>
+    </div>
+
+    <script>
+        function calcularMedia() {
+            const nota1 = parseFloat(document.getElementById('nota1').value);
+            const nota2 = parseFloat(document.getElementById('nota2').value);
+            const nota3 = parseFloat(document.getElementById('nota3').value);
+            const media = (nota1 + nota2 + nota3) / 3;
+
+            let conceito;
+            if (media >= 6) {
+                conceito = "Aprovado";
+            } else if (media >= 3) {
+                conceito = "Exame";
+            } else {
+                conceito = "Reprovado";
+            }
+
+            document.getElementById('resultado').value = `Média: ${media.toFixed(2)}\nConceito: ${conceito}`;
+        }
+    </script>
+</body>
+</html>
+
